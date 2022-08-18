@@ -18,3 +18,4 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
+.pem

@@ -15,4 +15,4 @@ class Testing(BaseConfig):
 
 
 class Prod(BaseConfig):
-    MONGODB_URL = "mongodb://mongodb/prod"
+    MONGODB_URL = f"{process.env.MONGO_URL_DB}://mongodb/prod"
