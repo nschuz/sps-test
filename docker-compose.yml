@@ -4,7 +4,7 @@ services:
     container_name: flask-api
     build: .
     ports:
-      - 5100:5100
+      - 8090:5100
     depends_on:
       - mongodb
     volumes:
