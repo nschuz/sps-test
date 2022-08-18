@@ -10,7 +10,7 @@ app = Flask(__name__)
 config = Development
 app.config.from_object(config)
 
-connect('app', host=config.MONGODB_URL)
+connect('app', host="mongodb://mongodb/dev")
 
 api = Api(app)
 

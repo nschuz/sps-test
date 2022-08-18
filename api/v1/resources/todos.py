@@ -1,5 +1,5 @@
 import json
-from flask import abort
+from flask import abort, jsonify, request , make_response
 from flask_restplus import Namespace, Resource
 from v1.model.models import Todo
 from mongoengine import DoesNotExist
@@ -13,7 +13,17 @@ class TodosApi(Resource):
         '''List all Todos'''
         todos = Todo.objects.all()
         return json.loads(todos.to_json()), 200
-
+    
+    def post(self):
+        """Create a new todo"""
+        #data = request.get_json() 
+        # # status code
+        json_data = request.get_json(force=True)
+        title = json_data["title"]
+        content = json_data["content"]
+        response = Todo.objects.insert(Todo(title=title,content=content))
+        print(response)
+        return make_response(jsonify({'data': json_data}), 201)
 
 @todos.route('/<id>')
 @todos.response(404, 'Todo not found')
@@ -28,3 +38,5 @@ class TodoApi(Resource):
             abort(404)
         except:
             abort(404)
+            
+        
