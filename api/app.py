@@ -10,7 +10,7 @@ config = globals()[os.environ['ENV']]
 #config = Development
 app.config.from_object(config)
 
-connect('app', host="mongodb://mongodb/dev")
+connect('app', host=config.MONGODB_URL)
 
 api = Api(app)
 
