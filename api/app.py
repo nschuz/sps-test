@@ -6,8 +6,8 @@ from config import *
 from v1.resources.routes import initialize_routes
 
 app = Flask(__name__)
-#config = globals()[os.environ['ENV']]
-config = Development
+config = globals()[os.environ['ENV']]
+#config = Development
 app.config.from_object(config)
 
 connect('app', host="mongodb://mongodb/dev")

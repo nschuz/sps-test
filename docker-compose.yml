@@ -7,6 +7,8 @@ services:
       - 8090:5100
     depends_on:
       - mongodb
+    environment:
+      - ENV=Development
     volumes:
       - .:/app
   mongodb:
